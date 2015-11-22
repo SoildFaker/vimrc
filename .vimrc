@@ -81,10 +81,10 @@ set nocompatible  "It should be first line
     map <c-s> :w<CR>
     nmap <F6> :tabprevious<CR> 
     nmap <F7> :tabnext<CR> 
-    nmap w= :resize +3<CR>
-    nmap w- :resize -3<CR>
-    nmap w, :vertical resize -3<CR>
-    nmap w. :vertical resize +3<CR>
+    nmap w= :resize -3<CR>
+    nmap w- :resize +3<CR>
+    nmap w, :vertical resize +3<CR>
+    nmap w. :vertical resize -3<CR>
 " }
 
 " Plugin{
