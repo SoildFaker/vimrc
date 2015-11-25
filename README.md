@@ -1,4 +1,4 @@
-#sf-vim
+#sf-vim:My Vim configuration
 This is a vim configuration specified for C/C++.
 
 #Installation

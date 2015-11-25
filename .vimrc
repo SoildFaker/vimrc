@@ -1,7 +1,7 @@
 set nocompatible  "It should be first line
 
 " General {
-
+    cd ~/Documents/code/    " My workpath
     set background=dark     "Assume a dark background
 
     syntax on                   "Syntax highlighting
@@ -9,7 +9,7 @@ set nocompatible  "It should be first line
     set mousehide               "Hide mouse cursor while typing
     scriptencoding utf-8
     
-    set cc=100                   "show a refence line
+    set cc=80                   "show a refence line
     set autochdir           "Automatically change the directory
     "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h |endif
     "Always switch to the current file directory
@@ -39,9 +39,9 @@ set nocompatible  "It should be first line
 
 " Formating {
     set wrap                    "wrap long lines
-    set softtabstop=4           "Let backspace delete indent
-    set tabstop=4               "An indentation every four columns
-    set shiftwidth=4            "Use indents of 4 spaces
+    set softtabstop=2           "Let backspace delete indent
+    set tabstop=2               "An indentation every four columns
+    set shiftwidth=2            "Use indents of 4 spaces
     set expandtab               "Tabs are spaces, not tabs  
     set autoindent              "Indent at the same level of the previous line 
     set nojoinspaces            "Prevents inserting two spaces after punctuation on a join
@@ -85,6 +85,29 @@ set nocompatible  "It should be first line
     nmap w- :resize +3<CR>
     nmap w, :vertical resize +3<CR>
     nmap w. :vertical resize -3<CR>
+" }
+
+" Command {
+    let g:input_toggle=1
+
+    function! Fcitx2en()
+      let s:input_status=system("fcitx-remote")
+      if s:input_status==2
+        let g:input_toggle=1
+        let l:a=system("fcitx-remote -c")
+      endif
+    endfunction
+
+    function! Fcitx2zh()
+      let s:input_status=system("fcitx-remote")
+      if s:input_status!=2&&g:input_toggle==1
+        let l:a=system("fcitx-remote -o")
+        let g:input_toggle=0
+      endif
+    endfunction
+
+    set timeoutlen=150
+    autocmd InsertLeave * call Fcitx2en()
 " }
 
 " Plugin{
@@ -208,7 +231,7 @@ set nocompatible  "It should be first line
         let g:ycm_min_num_of_chars_for_completion=2	" 从第2个键入字符就开始罗列匹配项
         let g:ycm_cache_omnifunc=0	" 禁止缓存匹配项,每次都重新生成匹配项
         let g:ycm_seed_identifiers_with_syntax=1	" 语法关键字补全
-        "nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>	"force recomile with syntastic
+        nnoremap <F8> :YcmForceCompileAndDiagnostics<CR>	"force recomile with syntastic
         "nnoremap <leader>lo :lopen<CR>	"open locationlist
         "nnoremap <leader>lc :lclose<CR>	"close locationlist
         inoremap <leader><leader> <C-x><C-o>
@@ -227,7 +250,7 @@ set nocompatible  "It should be first line
         set grepprg=grep\ -nH\ $*
         let g:tex_flavor='latex'
         set iskeyword+=:
-        autocmd BufEnter*.tex
+        "autocmd BufEnter*.tex
         set sw =2
     
     " }
