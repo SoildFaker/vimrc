@@ -39,11 +39,13 @@ set nocompatible  "It should be first line
 
 " Formating {
     set wrap                    "wrap long lines
-    set softtabstop=2           "Let backspace delete indent
-    set tabstop=2               "An indentation every four columns
-    set shiftwidth=2            "Use indents of 4 spaces
+    set softtabstop=4           "Let backspace delete indent
+    set tabstop=4               "An indentation every four columns
+    set shiftwidth=4            "Use indents of 4 spaces
     set expandtab               "Tabs are spaces, not tabs  
     set autoindent              "Indent at the same level of the previous line 
+    set smarttab
+    set smartindent             
     set nojoinspaces            "Prevents inserting two spaces after punctuation on a join
     set splitright              " Puts new vsplit windows to the right of the current
     set splitbelow              " Puts new split windows to the bottom of the current
@@ -69,7 +71,7 @@ set nocompatible  "It should be first line
 " Key Mappings {
     let mapleader=","
     "Select all
-    map <c-a> ggVG
+    "map <c-a> ggVG
     "Switch the buffer
     nmap <c-TAB> :bn!<CR>
     nmap <s-TAB> :bp!<CR>
@@ -85,11 +87,17 @@ set nocompatible  "It should be first line
     nmap w- :resize +3<CR>
     nmap w, :vertical resize +3<CR>
     nmap w. :vertical resize -3<CR>
+    "nnoremap j jzz
+    "nnoremap k kzz
+    "nnoremap <leader>bg :call ToggleBG()<CR>
+    nmap <leader>w :w<CR>
+    nmap <leader>mt :call SetTitle()<CR>
 " }
 
 " Command {
     let g:input_toggle=1
 
+    " Switch IME mode to ENGLISH
     function! Fcitx2en()
       let s:input_status=system("fcitx-remote")
       if s:input_status==2
@@ -98,6 +106,7 @@ set nocompatible  "It should be first line
       endif
     endfunction
 
+    " Switch IME mode to CHINESE
     function! Fcitx2zh()
       let s:input_status=system("fcitx-remote")
       if s:input_status!=2&&g:input_toggle==1
@@ -106,8 +115,67 @@ set nocompatible  "It should be first line
       endif
     endfunction
 
-    set timeoutlen=150
+    set timeoutlen=1500
     autocmd InsertLeave * call Fcitx2en()
+
+    " Allow to trigger background
+    "function! ToggleBG()
+    "    let s:tbg = &background
+        "" Inversion
+        "if s:tbg == "dark"
+            "set background=light
+        "else
+            "set background=dark
+        "endif
+    "endfunction
+" }
+
+" Code Assist {
+    "auto insert fileheader when codefile was created.
+    "autocmd BufNewFile *.cpp,*.[ch],*.sh,*rb,*.py exec ":call SetTitle()" 
+    func SetTitle() 
+      "if created a shell script
+      let g:mtAuthor="Enbin li"
+      let g:mtMail="enbinli@outlook.com"
+      if &filetype == 'sh' 
+        call setline(1,"\#!/bin/bash") 
+        call append(line("."), "") 
+        elseif &filetype == 'python'
+            call setline(1,"#!/usr/bin/env python")
+            call append(line("."),"# coding=utf-8")
+          call append(line(".")+1, "") 
+    
+        elseif &filetype == 'ruby'
+            call setline(1,"#!/usr/bin/env ruby")
+            call append(line("."),"# encoding: utf-8")
+          call append(line(".")+1, "")
+    
+    "    elseif &filetype == 'mkd'
+    "        call setline(1,"<head><meta charset=\"UTF-8\"></head>")
+      else 
+        call append(0, "/*************************************************************************") 
+        call append(1,"	> File Name: ".expand("%")) 
+        call append(2, "	> Author: ".expand(g:mtAuthor)) 
+        call append(3, "	> Mail: " .expand(g:mtMail)) 
+        call append(4, "	> Created Time: ".strftime("%c")) 
+        call append(5, " ************************************************************************/") 
+        call append(6, "")
+      endif
+      if expand("%:e") == 'cpp'
+        call append(7, "#include<iostream>")
+        call append(8, "using namespace std;")
+        call append(9, "")
+      endif
+      if &filetype == 'c'
+        call append(7, "#include<stdio.h>")
+        call append(8, "")
+      endif
+      if expand("%:e") == 'h'
+        call append(7, "#ifndef _".toupper(expand("%:r"))."_H")
+        call append(8, "#define _".toupper(expand("%:r"))."_H")
+        call append(9, "#endif")
+      endif
+    endfunc 
 " }
 
 " Plugin{
@@ -121,7 +189,7 @@ set nocompatible  "It should be first line
         let NERDTreeShowHidden=1
         let NERDTreeKeepTreeInNewTab=1
         let g:nerdtree_tabs_open_on_gui_startup=0
-        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
     " }
 
     " easymotion {
@@ -221,6 +289,7 @@ set nocompatible  "It should be first line
         inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
         inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
         inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
 
         "youcompleteme  默认tab  s-tab 和自动补全冲突
         "let g:ycm_key_list_select_completion = ['<Down>']
