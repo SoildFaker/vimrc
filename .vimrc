@@ -10,6 +10,7 @@ set nocompatible  "It should be first line
     scriptencoding utf-8
     
     set cc=80                   "show a refence line
+    set so=999                  " let the cursor always at middle screen
     set autochdir           "Automatically change the directory
     "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h |endif
     "Always switch to the current file directory
@@ -29,7 +30,7 @@ set nocompatible  "It should be first line
 " Vim UI {
 
     set laststatus=2
-    colorscheme molokai         "Load a colorscheme
+    colorscheme solarized         "Load a colorscheme
     set nu                      "Line numbers on
     set cursorline              "Highlight current line
     set tabpagemax=15           "Only show 15 tabs
@@ -212,7 +213,7 @@ set nocompatible  "It should be first line
         set statusline+=%#warningmsg#
         set statusline+=%{SyntasticStatuslineFlag()}
         set statusline+=%*
-        let g:syntastic_ignore_files=[".*\.py$"]
+        let g:syntastic_ignore_files=[".*\.py$",".*\.tex$"]
         let g:syntastic_always_populate_loc_list = 1
         let g:syntastic_auto_loc_list = 1
         let g:syntastic_check_on_open = 1
@@ -317,7 +318,7 @@ set nocompatible  "It should be first line
 
     " vim-latex{
         set grepprg=grep\ -nH\ $*
-        let g:tex_flavor='latex'
+        let g:tex_flavor='xelatex'
         set iskeyword+=:
         "autocmd BufEnter*.tex
         set sw =2
@@ -349,6 +350,7 @@ set nocompatible  "It should be first line
         Plugin 'nathanaelkane/vim-indent-guides'
         Plugin 'scrooloose/nerdcommenter'
         Plugin 'scrooloose/syntastic'
+        Plugin 'davidhalter/jedi-vim'
 
         call vundle#end()
         filetype plugin indent on
