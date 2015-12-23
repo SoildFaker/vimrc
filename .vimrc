@@ -73,6 +73,23 @@ set nocompatible  "It should be first line
     let mapleader=","
     "Select all
     "map <c-a> ggVG
+
+    "Ctrl+s to save
+    map <c-s> :w<CR>
+
+    nmap <leader>f= :resize -3<CR>
+    nmap <leader>f- :resize +3<CR>
+    nmap <leader>f, :vertical resize +3<CR>
+    nmap <leader>f. :vertical resize -3<CR>
+    "nnoremap j jzz
+    "nnoremap k kzz
+    "nnoremap <leader>bg :call ToggleBG()<CR>
+    nmap <leader>w :w<CR>
+    
+    " Auto make file head
+    nmap <leader>mk :call SetTitle()<CR>
+    
+
     "Switch buffers
     nmap <c-TAB> :bn!<CR>
     nmap <s-TAB> :bp!<CR>
@@ -99,36 +116,28 @@ set nocompatible  "It should be first line
         "nnoremap <leader>lo :lopen<CR>	"open locationlist
         "nnoremap <leader>lc :lclose<CR>	"close locationlist
         inoremap <leader><leader> <C-x><C-o>
-
         nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
     " }
 
+    " IndentGuides {
+        "this help you see indent clearly 
+        nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
+    " }
 
-    "Ctrl+s to save
-    map <c-s> :w<CR>
-
-    nmap <leader>f= :resize -3<CR>
-    nmap <leader>f- :resize +3<CR>
-    nmap <leader>f, :vertical resize +3<CR>
-    nmap <leader>f. :vertical resize -3<CR>
-    "nnoremap j jzz
-    "nnoremap k kzz
-    "nnoremap <leader>bg :call ToggleBG()<CR>
-    nmap <leader>w :w<CR>
-    nmap <leader>mk :call SetTitle()<CR>
-    " easymotion
-    " Search File
-    nmap  / <Plug>(easymotion-sn)
-    omap / <Plug>(easymotion-tn)
-    " go next match
-    nmap  n <Plug>(easymotion-next)
-    " go previous match
-    nmap  N <Plug>(easymotion-prev)
-    " Search 2 chars
-    nmap s <Plug>(easymotion-s2)
-    " JK motions: Line motions
-    map <Leader>j <Plug>(easymotion-j)
-    map <Leader>k <Plug>(easymotion-k)
+    " easymotion {
+        " Search File
+        nmap  / <Plug>(easymotion-sn)
+        omap / <Plug>(easymotion-tn)
+        " go next match
+        nmap  n <Plug>(easymotion-next)
+        " go previous match
+        nmap  N <Plug>(easymotion-prev)
+        " Search 2 chars
+        nmap s <Plug>(easymotion-s2)
+        " JK motions: Line motions
+        map <Leader>j <Plug>(easymotion-j)
+        map <Leader>k <Plug>(easymotion-k)
+    " }
 
     " Tabularize {
         nmap <Leader>a& :Tabularize /&<CR>
