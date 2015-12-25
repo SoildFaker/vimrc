@@ -70,7 +70,7 @@ set nocompatible  "It should be first line
 " }
 
 " Key Mappings & Settings{
-    let mapleader=","
+    let mapleader=";"
     "Select all
     "map <c-a> ggVG
 

@@ -1,16 +1,19 @@
 #Description
-This is a vim configuration file specified for C/C++.It contains a vim RC file, a special highlight script for C program files, which makes your code file more colorful and lets you feel more comfortable while you are codding.
-
+This git repository is a backup about my vim configuration, you can use it on your computer but it may not working well.
 #Installation
-Installation is pretty easy. For the `.vimrc` file: just copy it to your '~' path, if you want to back up your old configuration, just copy your own '.vimrc' file to another path. 
+This file only tested on linuix and may not able to use on Windows.
 
-##Requirements
+For linux user installation is pretty easy. runs the following command at anywhere you like in your home directory.
 
-###[Airline](https://github.com/bling/vim-airline)
-To make this plugin works prefectly you need a special font file, which can get [ here ](https://github.com/powerline/fonts).
+`git clone https://github.com/SoildFaker/sf-vim `
 
-###[YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
-This plugin needs to complie in you computer. For compling detail you can see [here](https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64-installation)
+And there would be a new directory named "sf-vim". Then source it in your .vimrc file.
+
+Some plugin needs special config.
+
+*[Airline](https://github.com/bling/vim-airline):To make this plugin works prefectly you need a special font file, which can get [ here ](https://github.com/powerline/fonts).
+
+*[YouCompleteMe](https://github.com/Valloric/YouCompleteMe)*This plugin needs to complie in you computer. For compling detail you can see [here](https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64-installation)
 
 ##Keys
 
