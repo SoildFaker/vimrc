@@ -9,11 +9,10 @@ For linux user installation is pretty easy. runs the following command at anywhe
 
 And there would be a new directory named "sf-vim". Then source it in your .vimrc file.
 
-Some plugin needs special config.
+###Some plugin needs special config.
+* [Airline](https://github.com/bling/vim-airline):To make this plugin works prefectly you need a special font file, which can get [ here ](https://github.com/powerline/fonts).
 
-*[Airline](https://github.com/bling/vim-airline):To make this plugin works prefectly you need a special font file, which can get [ here ](https://github.com/powerline/fonts).
-
-*[YouCompleteMe](https://github.com/Valloric/YouCompleteMe)*This plugin needs to complie in you computer. For compling detail you can see [here](https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64-installation)
+* [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)*This plugin needs to complie in you computer. For compling detail you can see [here](https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64-installation)
 
 ##Keys
 
