@@ -1,7 +1,7 @@
 set nocompatible  "It should be first line
 
 " General {
-    cd ~/Documents/code/    " My works
+    cd ~/Documents          " My works
     set background=dark     "Assume a dark background
 
     syntax on                   "Syntax highlighting
@@ -302,6 +302,7 @@ set nocompatible  "It should be first line
         Plugin 'davidhalter/jedi-vim'
         Plugin 'Shougo/vimshell.vim'
         Plugin 'Shougo/vimproc'
+        Plugin 'altercation/vim-colors-solarized'
 
         call vundle#end()
         filetype plugin indent on
