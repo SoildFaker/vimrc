@@ -9,6 +9,10 @@ For linux user installation is pretty easy. runs the following command at anywhe
 
 And there would be a new directory named "sf-vim". Then source it in your .vimrc file.
 
+Then install Vundle plugin with following cmd.
+
+`git https://github.com/vundle/vundle.git`
+
 ###Some plugin needs special config.
 * [Airline](https://github.com/bling/vim-airline):To make this plugin works prefectly you need a special font file, which can get [ here ](https://github.com/powerline/fonts).
 
