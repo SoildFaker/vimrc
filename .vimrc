@@ -70,10 +70,19 @@ set nocompatible  "It should be first line
 " }
 
 " Key Mappings & Settings{
-    let mapleader=";"
+    let mapleader="\\"
     "Select all
     "map <c-a> ggVG
-
+    nnoremap 0 g0
+    vnoremap 0 g0
+    nnoremap ^ g^
+    vnoremap ^ g^
+    nnoremap $ g$
+    vnoremap $ g$
+    nnoremap j gj
+    vnoremap j gj
+    nnoremap k gk
+    vnoremap k gk
     "Ctrl+s to save
     map <c-s> :w<CR>
 
@@ -303,6 +312,7 @@ set nocompatible  "It should be first line
         Plugin 'Shougo/vimshell.vim'
         Plugin 'Shougo/vimproc'
         Plugin 'altercation/vim-colors-solarized'
+        Plugin 'jiangmiao/auto-pairs'
 
         call vundle#end()
         filetype plugin indent on
