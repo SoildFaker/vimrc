@@ -1,7 +1,6 @@
 set nocompatible  "It should be first line
 
 " General {
-    cd ~/Documents          " My works
     set background=dark     "Assume a dark background
 
     syntax on                   "Syntax highlighting
@@ -30,7 +29,7 @@ set nocompatible  "It should be first line
 " Vim UI {
 
     set laststatus=2
-    colorscheme solarized         "Load a colorscheme
+    colorscheme molokai         "Load a colorscheme
     set nu                      "Line numbers on
     set cursorline              "Highlight current line
     set tabpagemax=15           "Only show 15 tabs
